@@ -6,26 +6,35 @@ var handlebars = require('express-handlebars').create({defaultLayout:'main'});
 app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
 app.set('port', 9566);
-// app.set('port', 3000);
+
+var bodyParser = require('body-parser');
+
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 app.get('/',function(req,res){
     var queryParams = [];
     for (var param in req.query){
         queryParams.push({'name':param,'value':req.query[param]})
     }
-    var context = {};
-    context.dataList = queryParams;
-    res.render('get-page', context);
+    var data = {};
+    data.urlList = queryParams;
+    res.render('get-page', data);
 });
 
 app.post('/',function(req,res){
     var queryParams = [];
+    var bodyParams = [];
     for (var param in req.query){
         queryParams.push({'name':param,'value':req.query[param]})
     }
-    var context = {};
-    context.dataList = queryParams;
-    res.render('post-page', context);
+    for (var param in req.body){
+        bodyParams.push({'name':param,'value':req.body[param]})
+    }
+    var data = {};
+    data.urlList = queryParams;
+    data.bodyList = bodyParams;
+    res.render('post-page', data);
 });
 
 app.use(function(req,res){
