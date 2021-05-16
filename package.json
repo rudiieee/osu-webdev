@@ -1,0 +1,19 @@
+{
+  "name": "osu-webdev",
+  "version": "1.0.0",
+  "description": "OSU CS290 Web Development Class",
+  "main": "getAndPost.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rudiieee/osu-webdev.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rudiieee/osu-webdev/issues"
+  },
+  "homepage": "https://github.com/rudiieee/osu-webdev#readme"
+}
